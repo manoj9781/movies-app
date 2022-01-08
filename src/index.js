@@ -8,7 +8,14 @@ import movies from './reducers';
 
 const store = createStore(movies);
 console.log("store", store);
-console.log("State", store.getState());
+console.log("Before State", store.getState());
+
+store.dispatch({
+  type: 'ADD_MOVIES',
+  movies:[{name:'Thor: The God of Thunder '}],
+})
+console.log("After State", store.getState());
+
 
 ReactDOM.render(
   <React.StrictMode>

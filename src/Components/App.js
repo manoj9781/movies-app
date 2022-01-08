@@ -2,20 +2,18 @@ import React from 'react';
 import { data } from '../data';
 import Navbar from './Navbar';
 import MovieCard from './MovieCard';
+import { addMovies } from '../actions';
 class App extends React.Component {
   componentDidMount() {
     const { store } = this.props;
     store.subscribe(() => {
-      console.log("Updated");
+      console.log('Updated');
       this.forceUpdate();
-    })
+    });
     //API Call
     // Dispatch Action
-    store.dispatch({
-      type: 'ADD_MOVIES',
-      movies:data,
-    })
-    console.log("State", store.getState());
+    store.dispatch(addMovies(data));
+    console.log('State', store.getState());
   }
   render() {
     const movies = this.props.store.getState();
